@@ -4,8 +4,8 @@ log=/tmp/roboshop.log
 status_check() {
   if [ $? -eq 0 ]
 then
-  echo 'success'
+  echo '\e[31m success \e[0m'
   else
-    echo 'fail'
+    echo '\e[33m fail \e[0m'
     fi
     }
