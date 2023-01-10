@@ -14,7 +14,7 @@ cd /usr/share/nginx/html
 
 unzip /tmp/frontend.zip
 
-cp "$script_location"/files/roboshoplatest-shell/reverse_proxy.conf /etc/nginx/default.d/roboshop.conf
+cp $script_location/files/roboshoplatest-shell/reverse_proxy.conf /etc/nginx/default.d/roboshop.conf
 
 systemctl restart nginx
 
