@@ -4,7 +4,11 @@ curl -sL https://rpm.nodesource.com/setup_lts.x | bash
 
 yum install nodejs -y
 
-useradd roboshop
+id roboshop
+if [ $? -ne 0 ]
+then
+  useradd roboshop
+  fi
 
 mkdir -p /app
 
