@@ -1,17 +1,24 @@
 source common.sh
+yum install nginx -y &>>${log}
+status_check
 
-yum install nginx -y
+rm -rf /usr/share/nginx/html/* &>>${log}
+status_check
 
-rm -rf /usr/share/nginx/html/*
+curl -o /tmp/frontend.zip https://roboshop-artifacts.s3.amazonaws.com/frontend.zip &>>${log}
+status_check
 
-curl -o /tmp/frontend.zip https://roboshop-artifacts.s3.amazonaws.com/frontend.zip
+cd /usr/share/nginx/html &>>${log}
+status_check
 
-cd /usr/share/nginx/html
+unzip /tmp/frontend.zip &>>${log}
 
-unzip /tmp/frontend.zip
+cp ${script_location}/files/reverse_proxy.conf /etc/nginx/default.d/roboshop.conf &>>${log}
+status_check
 
-cp ${script_location}/files/reverse_proxy.conf /etc/nginx/default.d/roboshop.conf
-systemctl enable nginx
+systemctl enable nginx &>>${log}
+status_check
 
-systemctl restart nginx
+systemctl restart nginx &>>${log}
+status_check
 

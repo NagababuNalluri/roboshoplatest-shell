@@ -18,16 +18,16 @@ status_check
 curl -L -o /tmp/catalogue.zip https://roboshop-artifacts.s3.amazonaws.com/catalogue.zip
 status_check
 rm -rf /app/*
-status_check
+
 cd /app
-status_check
+
 unzip /tmp/catalogue.zip
-status_check
+
 cd /app
 status_check
 npm install
 status_check
-cp $script_location/files/catalogue.service /etc/systemd/system/catalogue.service
+cp ${script_location}/files/catalogue.service /etc/systemd/system/catalogue.service
 status_check
 systemctl daemon-reload
 status_check
@@ -35,7 +35,7 @@ systemctl enable catalogue
 status_check
 systemctl start catalogue
 status_check
-cp $script_location/files/mongodb.repo /etc/yum.repos.d/mongodb.repo
+cp ${script_location}/files/mongodb.repo /etc/yum.repos.d/mongodb.repo
 status_check
 yum install mongodb-org-shell -y
 status_check
